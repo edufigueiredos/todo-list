@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "schema-todo": "libs/schema/todo",
     "todo-api": "apps/todo-api",
     "todo-app": "apps/todo-app",
     "todo-app-e2e": "apps/todo-app-e2e"
