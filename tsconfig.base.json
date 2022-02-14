@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@todo-list/app/component/top-bar": [
+        "libs/app/component/top-bar/src/index.ts"
+      ],
       "@todo-list/schema/todo": ["libs/schema/todo/src/index.ts"]
     }
   },

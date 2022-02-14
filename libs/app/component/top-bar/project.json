@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/app/component/top-bar",
+  "sourceRoot": "libs/app/component/top-bar/src",
+  "prefix": "todo-list",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/component/top-bar"],
+      "options": {
+        "jestConfig": "libs/app/component/top-bar/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/component/top-bar/src/**/*.ts",
+          "libs/app/component/top-bar/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

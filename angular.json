@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "app-component-top-bar": "libs/app/component/top-bar",
     "schema-todo": "libs/schema/todo",
     "todo-api": "apps/todo-api",
     "todo-app": "apps/todo-app",
