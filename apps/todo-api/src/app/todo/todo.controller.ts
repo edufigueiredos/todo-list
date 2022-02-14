@@ -26,13 +26,14 @@ export class TodoController {
     return this.todoService.create(todo);
   }
 
-  @Put('/id/:id')
+  @Put(':id')
   public update(@Param('id') id: string, @Body() todo: Todo): Promise<Todo> {
     return this.todoService.update(id, todo);
   }
 
-  @Delete('/id/:id')
+  @Delete(':id')
   public delete(@Param('id') id: string): void {
+    console.log(id);
     this.todoService.delete(id);
   }
 }

@@ -1,10 +1,11 @@
+import { TodoModel, TodoSchema } from './../schemas/todo.schema';
 import { Module } from '@nestjs/common';
-import { SchemaTodoModule } from '@todo-list/schema/todo';
+import { MongooseModule } from '@nestjs/mongoose';
 import { TodoController } from './todo.controller';
 import { TodoService } from './todo.service';
 
 @Module({
-  imports: [SchemaTodoModule],
+  imports: [MongooseModule.forFeature([{name: TodoModel.name, schema: TodoSchema}])],
   controllers: [TodoController],
   providers: [TodoService],
 })
