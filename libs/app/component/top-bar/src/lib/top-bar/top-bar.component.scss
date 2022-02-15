@@ -1,0 +1,15 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+  padding: 0 40px;
+  background-color: #b10000;
+
+  .app-title {
+    font-size: 3em;
+    color: white;
+    font-weight: bolder;
+    margin: 0;
+  }
+}

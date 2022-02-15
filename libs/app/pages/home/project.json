@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/app/pages/home",
+  "sourceRoot": "libs/app/pages/home/src",
+  "prefix": "todo-list",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/pages/home"],
+      "options": {
+        "jestConfig": "libs/app/pages/home/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/pages/home/src/**/*.ts",
+          "libs/app/pages/home/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

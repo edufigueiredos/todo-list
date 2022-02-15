@@ -18,6 +18,8 @@
       "@todo-list/app/component/top-bar": [
         "libs/app/component/top-bar/src/index.ts"
       ],
+      "@todo-list/app/pages/home": ["libs/app/pages/home/src/index.ts"],
+      "@todo-list/app/pages/login": ["libs/app/pages/login/src/index.ts"],
       "@todo-list/schema/todo": ["libs/schema/todo/src/index.ts"]
     }
   },
