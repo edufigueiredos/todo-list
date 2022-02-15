@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/app/directives/change-mat-icon-style",
+  "sourceRoot": "libs/app/directives/change-mat-icon-style/src",
+  "prefix": "todo-list",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/directives/change-mat-icon-style"],
+      "options": {
+        "jestConfig": "libs/app/directives/change-mat-icon-style/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/directives/change-mat-icon-style/src/**/*.ts",
+          "libs/app/directives/change-mat-icon-style/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

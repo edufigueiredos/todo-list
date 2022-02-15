@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "app-component-top-bar": "libs/app/component/top-bar",
+    "app-directives-change-mat-icon-style": "libs/app/directives/change-mat-icon-style",
     "app-pages-home": "libs/app/pages/home",
     "app-pages-login": "libs/app/pages/login",
     "schema-todo": "libs/schema/todo",
