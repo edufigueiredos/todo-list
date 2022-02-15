@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/models/models",
+  "sourceRoot": "libs/models/models/src",
+  "prefix": "todo-list",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/models/models"],
+      "options": {
+        "jestConfig": "libs/models/models/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/models/models/src/**/*.ts",
+          "libs/models/models/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

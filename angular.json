@@ -1,10 +1,13 @@
 {
   "version": 2,
   "projects": {
+    "app-component-modal": "libs/app/component/modal",
+    "app-component-todo-form": "libs/app/component/todo-form",
     "app-component-top-bar": "libs/app/component/top-bar",
     "app-directives-change-mat-icon-style": "libs/app/directives/change-mat-icon-style",
     "app-pages-home": "libs/app/pages/home",
     "app-pages-login": "libs/app/pages/login",
+    "models-models": "libs/models/models",
     "schema-todo": "libs/schema/todo",
     "todo-api": "apps/todo-api",
     "todo-app": "apps/todo-app",

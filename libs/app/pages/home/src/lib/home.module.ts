@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { ModalModule } from '@todo-list/app/component/modal';
+import { HomeRoutingModule } from './home-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-
-    RouterModule.forChild([
-      {path: '', pathMatch: 'full', component: HomeComponent}
-    ]),
+    HomeRoutingModule,
+    ModalModule,
   ],
   declarations: [
     HomeComponent

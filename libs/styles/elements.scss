@@ -1,0 +1,28 @@
+@import './colors.scss';
+
+@mixin buttonWidth($width: auto) {
+  width: $width;
+  min-width: 100px;
+}
+
+@mixin buttonDisabled() {
+  background-color: $lightGray;
+  cursor: not-allowed;
+}
+
+.primary-button {
+  @include buttonWidth();
+  background-color: $primary;
+  color: $white;
+  &:disabled {
+    @include buttonDisabled();
+  }
+}
+
+.secondary-button {
+  @include buttonWidth();
+  background-color: $lightGray;
+  &:disabled {
+    @include buttonDisabled();
+  }
+}

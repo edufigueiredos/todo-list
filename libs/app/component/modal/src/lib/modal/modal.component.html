@@ -1,0 +1,23 @@
+<section class="modal-component" [ngClass]="{'modal-component-close': !this.open}">
+  <div #background class="modal-background">
+    <div class="modal-container">
+      <div class="modal-header" *ngIf="title">
+        <div class="modal-header-content">
+          <h1>{{title}}</h1>
+        </div>
+      </div>
+
+      <div class="modal-content">
+        <ng-content></ng-content>
+      </div>
+
+      <div class="modal-footer" *ngIf="primaryButtonText || secondaryButtonText">
+        <div class="buttons-container">
+          <button mat-button (click)="secondaryButtonAction()" class="secondary-button" [disabled]="!secondaryButtonIsValid" *ngIf="secondaryButtonText">Cancelar</button>
+          <button mat-button (click)="primaryButtonAction()" class="primary-button" [disabled]="!primaryButtonIsValid" *ngIf="primaryButtonText">Salvar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

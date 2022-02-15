@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/app/component/modal",
+  "sourceRoot": "libs/app/component/modal/src",
+  "prefix": "todo-list",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/component/modal"],
+      "options": {
+        "jestConfig": "libs/app/component/modal/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/component/modal/src/**/*.ts",
+          "libs/app/component/modal/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
