@@ -9,7 +9,7 @@ import { Todo } from '@todo-list/schema/todo';
 })
 export class HomeComponent {
 
-  showModal = true;
+  showModal = false;
   formValid = false;
   formValue: Todo | null | undefined;
 

@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/app/services/todo-service",
+  "sourceRoot": "libs/app/services/todo-service/src",
+  "prefix": "todo-list",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/services/todo-service"],
+      "options": {
+        "jestConfig": "libs/app/services/todo-service/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/services/todo-service/src/**/*.ts",
+          "libs/app/services/todo-service/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

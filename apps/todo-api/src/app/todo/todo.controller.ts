@@ -33,7 +33,6 @@ export class TodoController {
 
   @Delete(':id')
   public delete(@Param('id') id: string): void {
-    console.log(id);
     this.todoService.delete(id);
   }
 }
