@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { ModalModule } from '@todo-list/app/component/modal';
 import { HomeRoutingModule } from './home-routing.module';
+import { TodoFormModule } from '@todo-list/app/component/todo-form';
 
 @NgModule({
   imports: [
     CommonModule,
     HomeRoutingModule,
     ModalModule,
+    TodoFormModule
   ],
   declarations: [
     HomeComponent

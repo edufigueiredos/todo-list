@@ -29,7 +29,7 @@
       ],
       "@todo-list/app/pages/home": ["libs/app/pages/home/src/index.ts"],
       "@todo-list/app/pages/login": ["libs/app/pages/login/src/index.ts"],
-      "@todo-list/models/models": ["libs/models/models/src/index.ts"],
+      "@todo-list/models": ["libs/models/src/index.ts"],
       "@todo-list/schema/todo": ["libs/schema/todo/src/index.ts"]
     }
   },

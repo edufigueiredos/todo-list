@@ -1,0 +1,27 @@
+@import '../../../../../../styles/elements.scss';
+
+.todo-form-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  mat-form-field {
+    width: calc(50% - 10px);
+  }
+
+  .textarea {
+    width: 100%;
+
+    textarea {
+      resize: none;
+    }
+  }
+
+  @media(max-width: 440px) {
+    flex-direction: column;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'models-models',
-  preset: '../../../jest.preset.js',
+  displayName: 'models',
+  preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/models/models',
+  coverageDirectory: '../../coverage/libs/models',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

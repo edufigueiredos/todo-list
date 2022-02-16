@@ -1,12 +1,12 @@
-import { Component, Input, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { fromEvent, pipe, Subject, takeUntil } from 'rxjs';
+import { Component, Input, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+import { fromEvent, Subject, take, takeUntil, timeout, timer } from 'rxjs';
 
 @Component({
   selector: 'todo-list-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent implements AfterViewInit, OnDestroy {
+export class ModalComponent implements AfterViewInit, OnChanges, OnDestroy {
   @ViewChild('background') background: ElementRef | undefined;
 
   @Input() open = false;
@@ -20,14 +20,27 @@ export class ModalComponent implements AfterViewInit, OnDestroy {
   @Output() primaryButtonEvent = new EventEmitter();
   @Output() secondaryButtonEvent = new EventEmitter();
 
+  showContent = false;
   unsubscribe$ = new Subject<boolean>();
 
   ngAfterViewInit(): void {
     this.createFromEvent();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+      this.controlShowContent(changes);
+  }
+
+  controlShowContent(changes: SimpleChanges) {
+    if (changes && changes['open'] && changes['open'].currentValue === true) {
+      this.showContent = true;
+    } else if (changes && changes['open'] && changes['open'].currentValue === false) {
+      timer(300).pipe(take(1)).subscribe(() => this.showContent = false);
+    }
+  }
+
   private createFromEvent() {
-    fromEvent(this.background?.nativeElement, 'click', (event: PointerEvent) => {
+    fromEvent(this.background?.nativeElement, 'mousedown', (event: PointerEvent) => {
       this.closeModal(event);
     }).pipe(takeUntil(this.unsubscribe$)).subscribe();
   }

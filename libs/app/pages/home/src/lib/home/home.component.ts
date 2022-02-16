@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { Component } from '@angular/core';
+import { Todo } from '@todo-list/schema/todo';
 
 @Component({
   selector: 'todo-list-home',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent {
 
-  showModal = false;
+  showModal = true;
+  formValid = false;
+  formValue: Todo | null | undefined;
+
+  resetForm$ = new Subject<boolean>();
 
   openModal() {
     this.showModal = true;
@@ -15,10 +21,21 @@ export class HomeComponent {
 
   closeModal() {
     this.showModal = false;
+    this.formValue = null;
+    this.resetForm$.next(true);
   }
 
-  clicou() {
-    console.log('Sim, clicou')
+  saveData() {
+    console.log(this.formValue);
+  }
+
+  getFormValue(event: Todo) {
+    this.formValue = event;
+    if (event) {
+      this.formValid = true;
+    } else {
+      this.formValid = false;
+    }
   }
 
 }
