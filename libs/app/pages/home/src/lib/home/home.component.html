@@ -1,7 +1,19 @@
-<button (click)="openModal()">Abrir modal</button>
+<section class="home-component">
+  <div class="list-container">
+    <ul class="todo-list" >
+    <ng-container *ngFor="let item of todoList$ | async as teste">
+        <li class="todo-item">
+
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</section>
+
+<!-- <button (click)="openModal()">Abrir modal</button> -->
 
 <todo-list-modal [open]="showModal" [title]="'Mussum Ipsum'" (closeModalEvent)="closeModal()"
-  (primaryButtonEvent)="saveData()" (secondaryButtonEvent)="closeModal()" [primaryButtonIsValid]="formValid" [primaryButtonText]="'Salvar'"
-  [secondaryButtonText]="'Cancelar'">
+  (primaryButtonEvent)="saveData()" (secondaryButtonEvent)="closeModal()" [primaryButtonIsValid]="formValid"
+  [primaryButtonText]="'Salvar'" [secondaryButtonText]="'Cancelar'">
   <todo-list-todo-form [resetForm]="resetForm$" (formValueEmitter)="getFormValue($event)"></todo-list-todo-form>
 </todo-list-modal>

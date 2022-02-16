@@ -1,1 +1,1 @@
-export * from './lib/todo-service.module';
+export * from './lib/todo.service';
