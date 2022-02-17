@@ -1,3 +1,5 @@
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,11 +10,15 @@ import { TodoFormModule } from '@todo-list/app/component/todo-form';
 import { TodoService } from '@todo-list/app/services/todo-service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HomeRoutingModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     ModalModule,
     TodoFormModule,
     MatButtonModule,

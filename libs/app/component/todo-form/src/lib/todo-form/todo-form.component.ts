@@ -16,12 +16,11 @@ export class TodoFormComponent implements OnInit, OnDestroy {
 
   todoForm: FormGroup = this.formBuilder.group({
     _id: [''],
-    createdAt: [''],
+    createdAt: [new Date()],
     name: ['', Validators.required],
     description: [''],
     date: ['', Validators.required],
-    priority: ['', Validators.required],
-    status: [''],
+    priority: ['', Validators.required]
   })
 
   unsubscribe$ = new Subject<boolean>();

@@ -16,8 +16,12 @@ export class HomeComponent implements OnInit {
   formValue: Todo | null | undefined;
   todoList$: Observable<Todo[]> | undefined;
 
-  showdeleteItemModal = false;
+  showDeleteItemModal = false;
   itemToDelete: Todo | undefined;
+  dateItemToComplete: Date | undefined;
+
+  showCompleteItemModal = false;
+  itemToComplete: Todo | undefined;
 
   resetForm$ = new Subject<boolean>();
   editForm$ = new Subject<Todo>();
@@ -64,11 +68,11 @@ export class HomeComponent implements OnInit {
 
   openDeleteModal(item: Todo) {
     this.itemToDelete = item;
-    this.showdeleteItemModal = true;
+    this.showDeleteItemModal = true;
   }
 
   closeDeleteModal() {
-    this.showdeleteItemModal = false;
+    this.showDeleteItemModal = false;
     this.itemToDelete = undefined;
   }
 
@@ -78,6 +82,26 @@ export class HomeComponent implements OnInit {
         .pipe(take(1))
         .subscribe(() => this.closeDeleteModal());
     }
+  }
+
+  openCompleteModal(item: Todo) {
+    this.itemToComplete = item;
+    this.showCompleteItemModal = true;
+  }
+
+  completeItem() {
+    if (this.dateItemToComplete && this.itemToComplete && this.itemToComplete._id) {
+      const id = this.itemToComplete._id;
+      const itemToComplete = JSON.parse(JSON.stringify(this.itemToComplete));
+      itemToComplete.completedAt = new Date(this.dateItemToComplete);
+      this.todoService.update(id, itemToComplete).pipe(take(1)).subscribe(() => this.showCompleteItemModal = false);
+    }
+  }
+
+  closeCompleteModal() {
+    this.showCompleteItemModal = false;
+    this.dateItemToComplete = undefined;
+    this.itemToComplete = undefined;
   }
 
   sendDataToForm(item: Todo) {

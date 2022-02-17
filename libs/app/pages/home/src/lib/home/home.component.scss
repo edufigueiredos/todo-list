@@ -27,7 +27,6 @@
         justify-content: center;
         margin-bottom: 5px;
         border-bottom: 1px solid $gray;
-        height: 80px;
         &:last-child {
           border-bottom: none;
         }
@@ -41,6 +40,7 @@
         }
 
         .info-container {
+          width: 200px;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
@@ -53,6 +53,7 @@
         }
 
         .icon-container {
+          width: 180px;
           @include margin-container();
 
           button {
