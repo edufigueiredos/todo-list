@@ -13,8 +13,8 @@
 
       <div class="modal-footer" *ngIf="primaryButtonText || secondaryButtonText">
         <div class="buttons-container">
-          <button mat-button (click)="secondaryButtonAction()" class="secondary-button" [disabled]="!secondaryButtonIsValid" *ngIf="secondaryButtonText">Cancelar</button>
-          <button mat-button (click)="primaryButtonAction()" class="primary-button" [disabled]="!primaryButtonIsValid" *ngIf="primaryButtonText">Salvar</button>
+          <button mat-button (click)="secondaryButtonAction()" class="secondary-button" [disabled]="!secondaryButtonIsValid" *ngIf="secondaryButtonText">{{secondaryButtonText}}</button>
+          <button mat-button (click)="primaryButtonAction()" class="primary-button" [disabled]="!primaryButtonIsValid" *ngIf="primaryButtonText">{{primaryButtonText}}</button>
         </div>
       </div>
 

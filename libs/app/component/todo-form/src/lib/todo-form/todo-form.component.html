@@ -1,5 +1,6 @@
 <form [formGroup]="todoForm" class="todo-form-container">
   <input type="hidden" formControlName="_id">
+  <input type="hidden" formControlName="createdAt">
 
   <mat-form-field>
     <mat-label>Nome</mat-label>
@@ -15,17 +16,17 @@
   <mat-form-field>
     <mat-label>Prioridade</mat-label>
     <mat-select formControlName="priority">
-      <mat-option value="low">Baixa</mat-option>
-      <mat-option value="medium">Média</mat-option>
-      <mat-option value="high">Alta</mat-option>
+      <mat-option value="Baixa">Baixa</mat-option>
+      <mat-option value="Média">Média</mat-option>
+      <mat-option value="Alta">Alta</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Estado</mat-label>
     <mat-select formControlName="status">
-      <mat-option value="pending">Pendente</mat-option>
-      <mat-option value="completed">Concluído</mat-option>
+      <mat-option value="Pendente">Pendente</mat-option>
+      <mat-option value="Concluído">Concluído</mat-option>
     </mat-select>
   </mat-form-field>
 

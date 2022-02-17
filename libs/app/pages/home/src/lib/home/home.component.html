@@ -1,19 +1,47 @@
 <section class="home-component">
   <div class="list-container">
     <ul class="todo-list" >
-    <ng-container *ngFor="let item of todoList$ | async as teste">
+    <ng-container *ngFor="let item of todoList$ | async">
         <li class="todo-item">
-
+          <div class="name-container">
+            <span class="name">{{item?.name}}</span>
+          </div>
+          <div class="info-container">
+            <span class="createdAt" *ngIf="item?.createdAt">Criada em: <strong>{{item?.createdAt | date: 'shortDate'}}</strong></span>
+            <span class="status" *ngIf="item?.status">Estado: <strong>{{item?.status}}</strong></span>
+            <span class="priority" *ngIf="item?.priority">Prioridade: <strong>{{item?.priority}}</strong></span>
+          </div>
+          <div class="icon-container">
+            <button mat-mini-fab color="accent" (click)="sendDataToForm(item)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary" (click)="openDeleteModal(item)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </li>
       </ng-container>
     </ul>
   </div>
+  <button color="warn" mat-mini-fab class="button-add" (click)="openModal()">
+    <mat-icon>add</mat-icon>
+  </button>
 </section>
 
-<!-- <button (click)="openModal()">Abrir modal</button> -->
 
-<todo-list-modal [open]="showModal" [title]="'Mussum Ipsum'" (closeModalEvent)="closeModal()"
+<todo-list-modal [open]="showModal" [title]="'Criar Item'" (closeModalEvent)="closeModal()"
   (primaryButtonEvent)="saveData()" (secondaryButtonEvent)="closeModal()" [primaryButtonIsValid]="formValid"
   [primaryButtonText]="'Salvar'" [secondaryButtonText]="'Cancelar'">
-  <todo-list-todo-form [resetForm]="resetForm$" (formValueEmitter)="getFormValue($event)"></todo-list-todo-form>
+  <todo-list-todo-form [resetForm$]="resetForm$" [editForm$]="editForm$" (formValueEmitter)="getFormValue($event)"></todo-list-todo-form>
+</todo-list-modal>
+
+<todo-list-modal
+[open]="showdeleteItemModal"
+[title]="'Apagar'"
+[primaryButtonText]="'Sim'"
+[secondaryButtonText]="'Não'"
+(primaryButtonEvent)="deleteItem()"
+(secondaryButtonEvent)="closeDeleteModal()"
+>
+  <h3>Deseja apagar o item <strong>{{itemToDelete?.name}}</strong></h3>
 </todo-list-modal>

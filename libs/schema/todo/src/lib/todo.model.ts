@@ -1,10 +1,10 @@
 export interface Todo {
-  _id: string;
+  _id?: string;
   name: string;
-  description: string;
-  date: Date;
+  description?: string;
+  date: Date | string;
   priority: string;
-  createdAt: Date;
-  completedAt: Date;
-  status: string;
+  createdAt?: Date;
+  completedAt?: Date;
+  status?: string;
 }

@@ -86,6 +86,7 @@ $transitionDuration: 0.3s;
 
 .modal-component-close {
   z-index: -10;
+  transition-delay: 0.4s;
 
   .modal-background {
     background-color: transparent;

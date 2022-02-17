@@ -11,9 +11,9 @@ export class ModalComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   @Input() open = false;
   @Input() title = '';
-  @Input() primaryButtonText = '';
+  @Input() primaryButtonText = 'Ok';
   @Input() primaryButtonIsValid = true;
-  @Input() secondaryButtonText = '';
+  @Input() secondaryButtonText = 'Fechar';
   @Input() secondaryButtonIsValid = true;
 
   @Output() closeModalEvent = new EventEmitter<boolean>();
@@ -28,7 +28,7 @@ export class ModalComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      this.controlShowContent(changes);
+    this.controlShowContent(changes);
   }
 
   controlShowContent(changes: SimpleChanges) {

@@ -11,10 +11,12 @@ import { mergeMap, of, Subject, takeUntil } from 'rxjs';
 export class TodoFormComponent implements OnInit, OnDestroy {
 
   @Output() formValueEmitter = new EventEmitter<Todo>();
-  @Input() resetForm: Subject<boolean> | undefined;
+  @Input() resetForm$: Subject<boolean> | undefined;
+  @Input() editForm$: Subject<Todo> | undefined;
 
   todoForm: FormGroup = this.formBuilder.group({
     _id: [''],
+    createdAt: [''],
     name: ['', Validators.required],
     description: [''],
     date: ['', Validators.required],
@@ -28,14 +30,23 @@ export class TodoFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.emitFormValue();
-    this.resetFormMethod()
+    this.resetFormMethod();
+    this.editFormMethod();
   }
 
   resetFormMethod() {
-    if (this.resetForm) {
-      this.resetForm
+    if (this.resetForm$) {
+      this.resetForm$
         .pipe(takeUntil(this.unsubscribe$))
-        .subscribe(() => this.todoForm.reset())
+        .subscribe(() => this.todoForm.reset());
+    }
+  }
+
+  editFormMethod() {
+    if (this.editForm$) {
+      this.editForm$
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe((data: Todo) => this.todoForm.setValue(data));
     }
   }
 
