@@ -11,6 +11,8 @@ import { TodoService } from '@todo-list/app/services/todo-service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { HomeDetailComponent } from './home-detail/home-detail.component';
+import { ChangeMatIconStyleModule } from '@todo-list/app/directives/change-mat-icon-style';
 
 @NgModule({
   imports: [
@@ -22,10 +24,12 @@ import { FormsModule } from '@angular/forms';
     ModalModule,
     TodoFormModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    ChangeMatIconStyleModule
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
+    HomeDetailComponent
   ],
   exports: [
     HomeComponent

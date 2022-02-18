@@ -25,14 +25,18 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 5px;
         border-bottom: 1px solid $gray;
-        &:last-child {
-          border-bottom: none;
+        transition: 0.2s background-color ease-in-out;
+
+        &:hover {
+          background-color: rgba($color: $darkGray, $alpha: 0.1);
+        }
+
+        .todo-item-container {
+          width: 200px;
         }
 
         .name-container {
-          width: 200px;
           text-align: center;
           font-size: 1.3em;
           font-weight: bold;
@@ -40,7 +44,6 @@
         }
 
         .info-container {
-          width: 200px;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
@@ -53,8 +56,14 @@
         }
 
         .icon-container {
-          width: 180px;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
           @include margin-container();
+
+          .info-button {
+            background-color: $darkGray;
+          }
 
           button {
             margin: 10px;

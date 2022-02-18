@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   closeModal() {
+    this.isItemEditing = false;
     this.showModal = false;
     this.formValue = null;
     this.resetForm$.next(true);
@@ -92,8 +93,9 @@ export class HomeComponent implements OnInit {
   completeItem() {
     if (this.dateItemToComplete && this.itemToComplete && this.itemToComplete._id) {
       const id = this.itemToComplete._id;
-      const itemToComplete = JSON.parse(JSON.stringify(this.itemToComplete));
+      const itemToComplete: Todo = JSON.parse(JSON.stringify(this.itemToComplete));
       itemToComplete.completedAt = new Date(this.dateItemToComplete);
+      itemToComplete.status = 'Concluído';
       this.todoService.update(id, itemToComplete).pipe(take(1)).subscribe(() => this.showCompleteItemModal = false);
     }
   }

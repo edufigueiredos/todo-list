@@ -3,16 +3,19 @@
     <ul class="todo-list" >
     <ng-container *ngFor="let item of todoList$ | async">
         <li class="todo-item">
-          <div class="name-container">
+          <div class="todo-item-container name-container">
             <span class="name">{{item?.name}}</span>
           </div>
-          <div class="info-container">
+          <div class="todo-item-container info-container">
             <span class="createdAt" *ngIf="item?.createdAt">Criada em: <strong>{{item?.createdAt | date: 'shortDate'}}</strong></span>
             <span class="status" *ngIf="item?.status">Estado: <strong>{{item?.status}}</strong></span>
             <span class="priority" *ngIf="item?.priority">Prioridade: <strong>{{item?.priority}}</strong></span>
             <span class="completedAt" *ngIf="item?.completedAt">Concluído em: <strong>{{item?.completedAt | date: 'shortDate'}}</strong></span>
           </div>
-          <div class="icon-container">
+          <div class="todo-item-container icon-container">
+            <button mat-mini-fab [routerLink]="['/home/list-detail', item?._id]" class="info-button">
+              <mat-icon>info</mat-icon>
+            </button>
             <button mat-mini-fab color="accent" (click)="sendDataToForm(item)">
               <mat-icon>edit</mat-icon>
             </button>
