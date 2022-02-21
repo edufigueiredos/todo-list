@@ -31,6 +31,11 @@ export class TodoController {
     return this.todoService.update(id, todo);
   }
 
+  @Put('/complete/:id')
+  public completeTask(@Param('id') id: string, @Body() date: {date: Date}): Promise<Todo> {
+    return this.todoService.completeTask(id, date);
+  }
+
   @Delete(':id')
   public delete(@Param('id') id: string): void {
     this.todoService.delete(id);

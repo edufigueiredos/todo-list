@@ -7,10 +7,10 @@
             <span class="name">{{item?.name}}</span>
           </div>
           <div class="todo-item-container info-container">
-            <span class="createdAt" *ngIf="item?.createdAt">Criada em: <strong>{{item?.createdAt | date: 'shortDate'}}</strong></span>
+            <span class="createdAt" *ngIf="item?.createdAt">Criada em: <strong>{{item?.createdAt | date: 'shortDate':"UTC"}}</strong></span>
             <span class="status" *ngIf="item?.status">Estado: <strong>{{item?.status}}</strong></span>
             <span class="priority" *ngIf="item?.priority">Prioridade: <strong>{{item?.priority}}</strong></span>
-            <span class="completedAt" *ngIf="item?.completedAt">Concluído em: <strong>{{item?.completedAt | date: 'shortDate'}}</strong></span>
+            <span class="completedAt" *ngIf="item?.completedAt">Concluído em: <strong>{{item?.completedAt | date: 'shortDate':"UTC"}}</strong></span>
           </div>
           <div class="todo-item-container icon-container">
             <button mat-mini-fab [routerLink]="['/home/list-detail', item?._id]" class="info-button">

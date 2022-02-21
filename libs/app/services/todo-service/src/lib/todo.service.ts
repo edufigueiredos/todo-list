@@ -31,6 +31,10 @@ export class TodoService {
     return this.http.put<Todo>(`${this.api}/${id}`, todo);
   }
 
+  completeTask(id: string, date: {date: Date}): Observable<Todo> {
+    return this.http.put<Todo>(`${this.api}/complete/${id}`, date);
+  }
+
   delete(id: string): Observable<void> {
     return this.http.delete<void>(`${this.api}/${id}`);
   }

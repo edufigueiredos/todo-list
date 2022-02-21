@@ -29,6 +29,19 @@ export class TodoService {
     await this.todoModel.updateOne({_id: id}, todo).exec();
     return await this.findById(id);
   }
+
+  async completeTask(id: string, date: {date: Date}): Promise<Todo> {
+    const todo = await this.findById(id);
+    if(todo) {
+      todo.completedAt = new Date(date.date);
+      todo.status = 'Concluído';
+      await this.todoModel.updateOne({_id: id}, todo);
+      return await this.findById(id);
+    } else {
+      throw new Error('ID passado por parêmetro e o ID do objeto são diferentes');
+    }
+  }
+
   async delete(id: string): Promise<void> {
     await this.todoModel.deleteOne({_id: id});
   }

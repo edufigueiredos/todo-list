@@ -93,10 +93,10 @@ export class HomeComponent implements OnInit {
   completeItem() {
     if (this.dateItemToComplete && this.itemToComplete && this.itemToComplete._id) {
       const id = this.itemToComplete._id;
-      const itemToComplete: Todo = JSON.parse(JSON.stringify(this.itemToComplete));
-      itemToComplete.completedAt = new Date(this.dateItemToComplete);
-      itemToComplete.status = 'Concluído';
-      this.todoService.update(id, itemToComplete).pipe(take(1)).subscribe(() => this.showCompleteItemModal = false);
+      const date = { date: this.dateItemToComplete };
+      this.todoService.completeTask(id, date)
+        .pipe(take(1))
+        .subscribe(() => this.showCompleteItemModal = false);
     }
   }
 
@@ -113,8 +113,7 @@ export class HomeComponent implements OnInit {
       priority: item.priority,
       _id: item._id,
       createdAt: item.createdAt,
-      description: item.description ? item.description : '',
-      status: item.status
+      description: item.description ? item.description : ''
     }
     this.editForm$.next(itemToEdit);
     this.isItemEditing = true;
