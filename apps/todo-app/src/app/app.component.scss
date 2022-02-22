@@ -1,0 +1,7 @@
+@import '../../../../libs/styles/elements.scss';
+
+.app-container {
+  // 75px is the height of top-bar
+  height: calc(100vh - 75px);
+  overflow: auto;
+}

@@ -1,0 +1,36 @@
+@import '../../../../../../styles/colors.scss';
+@import '../../../../../../styles/elements.scss';
+
+.home-detail-component {
+
+  .link-back {
+    margin: 10px;
+  }
+
+  .item-name {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .grid-item {
+    width: 340px;
+    display: grid;
+    grid-template-columns: 170px 170px;
+    gap: 15px;
+    justify-items: center;
+    margin: 0 auto;
+
+    .item-field {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .property {
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

@@ -1,1 +1,37 @@
-<p>home-detail works!</p>
+<section class="home-detail-component" *ngIf="todoDetail$ | async as item; else itemNotFound">
+  <a class="link-back" mat-raised-button [routerLink]="['/home/list']" routerLinkActive="router-link-active" ><mat-icon>chevron_left</mat-icon> Voltar</a>
+  <h1 class="item-name">{{item?.name}}</h1>
+
+  <div class="grid-item">
+    <div class="item-field">
+      <span class="property">Criada em:</span>
+      <span class="value">{{item?.createdAt | date: 'shortDate':'UTC'}}</span>
+    </div>
+    <div class="item-field">
+      <span class="property">Data para conclusão:</span>
+      <span class="value">{{item?.date | date: 'shortDate':'UTC'}}</span>
+    </div>
+    <div class="item-field">
+      <span class="property">Prioridade:</span>
+      <span class="value">{{item?.priority}}</span>
+    </div>
+    <div class="item-field" *ngIf="item?.status">
+      <span class="property">Estado:</span>
+      <span class="value">{{item?.status}}</span>
+    </div>
+    <div class="item-field" *ngIf="item?.status">
+      <span class="property">Concluída em:</span>
+      <span class="value">{{item?.completedAt | date: 'shortDate':'UTC'}}</span>
+    </div>
+    <div class="item-field" *ngIf="item?.description">
+      <span class="property">Descrição:</span>
+      <span class="value">{{item?.description}}</span>
+    </div>
+  </div>
+</section>
+
+<ng-template #itemNotFound>
+  <section class="home-detail-component">
+
+  </section>
+</ng-template>
