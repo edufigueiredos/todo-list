@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/app/state/ngrx",
+  "sourceRoot": "libs/app/state/ngrx/src",
+  "prefix": "todo-list",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/state/ngrx"],
+      "options": {
+        "jestConfig": "libs/app/state/ngrx/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/state/ngrx/src/**/*.ts",
+          "libs/app/state/ngrx/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
