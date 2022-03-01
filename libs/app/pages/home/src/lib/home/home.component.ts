@@ -1,7 +1,8 @@
 import { Subject, Observable, take } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '@todo-list/schema/todo';
-import { TodoService } from '@todo-list/app/services/todo-service';
+import { allTodosSelector, loadTodosEffect, TodoService, TodoState } from '@todo-list/app/services/todo-service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'todo-list-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   formValid = false;
   isItemEditing = false;
   formValue: Todo | null | undefined;
-  todoList$: Observable<Todo[]> | undefined;
+  todoList$: Observable<Todo[]> = this.store.select(allTodosSelector)
 
   showDeleteItemModal = false;
   itemToDelete: Todo | undefined;
@@ -26,7 +27,10 @@ export class HomeComponent implements OnInit {
   resetForm$ = new Subject<boolean>();
   editForm$ = new Subject<Todo>();
 
-  constructor(private todoService: TodoService) {
+  constructor(
+    private todoService: TodoService,
+    private store: Store
+  ) {
   }
 
   ngOnInit(): void {
@@ -34,7 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
   getTodoList() {
-    this.todoList$ = this.todoService.getAll();
+    this.store.dispatch(loadTodosEffect());
   }
 
   openModal() {

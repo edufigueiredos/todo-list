@@ -6,6 +6,8 @@ export const initialState: TodoState = {
   todos: []
 }
 
+export const todoStateKey = 'todoState';
+
 export const todoReducer = createReducer(
   initialState,
   on(setAllTodosStore, (state, { todos }) => {

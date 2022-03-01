@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { todoReducer } from './+state/todo.reducers';
+import { todoReducer, todoStateKey } from './+state/todo.reducers';
 import { TodoEffect } from './+state/todo.effects';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    StoreModule.forFeature('todoStore', todoReducer),
+    StoreModule.forFeature(todoStateKey, todoReducer),
     EffectsModule.forFeature([TodoEffect])
   ],
   providers: [TodoService],

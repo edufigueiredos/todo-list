@@ -1,3 +1,4 @@
+import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,6 +10,9 @@ import { HomeModule } from '@todo-list/app/pages/home';
 import { AppRoutingModule } from './app-routing.module';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '@env/frontend'
 registerLocaleData(localePt)
 
 @NgModule({
@@ -19,7 +23,10 @@ registerLocaleData(localePt)
     AppRoutingModule,
     HttpClientModule,
     TopBarModule,
-    HomeModule
+    HomeModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot(),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [
     {
