@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/app/component/card",
+  "sourceRoot": "libs/app/component/card/src",
+  "prefix": "todo-list",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/component/card"],
+      "options": {
+        "jestConfig": "libs/app/component/card/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/component/card/src/**/*.ts",
+          "libs/app/component/card/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

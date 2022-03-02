@@ -1,34 +1,41 @@
 <section class="home-component">
-  <div class="list-container">
-    <ul class="todo-list" >
+  <div class="card-container">
     <ng-container *ngFor="let item of todoList$ | async">
-        <li class="todo-item">
-          <div class="todo-item-container name-container">
-            <span class="name">{{item?.name}}</span>
+      <todo-list-card [cardTitle]="item.name">
+        <div class="card-content">
+          <div class="card-info" *ngIf="item?.createdAt">
+            <span>Criada em:</span>
+            <strong>{{item?.createdAt | date: 'shortDate':"UTC"}}</strong>
           </div>
-          <div class="todo-item-container info-container">
-            <span class="createdAt" *ngIf="item?.createdAt">Criada em: <strong>{{item?.createdAt | date: 'shortDate':"UTC"}}</strong></span>
-            <span class="status" *ngIf="item?.status">Estado: <strong>{{item?.status}}</strong></span>
-            <span class="priority" *ngIf="item?.priority">Prioridade: <strong>{{item?.priority}}</strong></span>
-            <span class="completedAt" *ngIf="item?.completedAt">Concluído em: <strong>{{item?.completedAt | date: 'shortDate':"UTC"}}</strong></span>
+          <div class="card-info" *ngIf="item?.status">
+            <span>Estado:</span>
+            <strong>{{item?.status}}</strong>
           </div>
-          <div class="todo-item-container icon-container">
-            <button mat-mini-fab [routerLink]="['/home/list-detail', item?._id]" class="info-button">
-              <mat-icon>info</mat-icon>
-            </button>
-            <button mat-mini-fab color="accent" (click)="sendDataToForm(item)">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-mini-fab color="primary" (click)="openDeleteModal(item)">
-              <mat-icon>delete</mat-icon>
-            </button>
-            <button mat-mini-fab color="warn" (click)="openCompleteModal(item)" *ngIf="!item?.completedAt">
-              <mat-icon>check</mat-icon>
-            </button>
+          <div class="card-info" *ngIf="item?.priority">
+            <span>Prioridade:</span>
+            <strong>{{item?.priority}}</strong>
           </div>
-        </li>
-      </ng-container>
-    </ul>
+          <div class="card-info" *ngIf="item?.completedAt">
+            <span>Concluído em:</span>
+            <strong>{{item?.completedAt | date: 'shortDate':"UTC"}}</strong>
+          </div>
+        </div>
+        <div class="card-actions icon-container">
+          <button mat-mini-fab [routerLink]="['/home/list-detail', item?._id]" class="info-button">
+            <mat-icon>info</mat-icon>
+          </button>
+          <button mat-mini-fab color="accent" (click)="sendDataToForm(item)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab color="primary" (click)="openDeleteModal(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-mini-fab color="warn" (click)="openCompleteModal(item)" *ngIf="!item?.completedAt">
+            <mat-icon>check</mat-icon>
+          </button>
+        </div>
+      </todo-list-card>
+    </ng-container>
   </div>
   <button color="warn" mat-mini-fab class="button-add" (click)="openModal()">
     <mat-icon>add</mat-icon>
@@ -38,31 +45,20 @@
 <todo-list-modal [open]="showModal" [title]="'Criar Item'" (closeModalEvent)="closeModal()"
   (primaryButtonEvent)="saveData()" (secondaryButtonEvent)="closeModal()" [primaryButtonIsValid]="formValid"
   [primaryButtonText]="'Salvar'" [secondaryButtonText]="'Cancelar'">
-  <todo-list-todo-form [resetForm$]="resetForm$" [editForm$]="editForm$" (formValueEmitter)="getFormValue($event)"></todo-list-todo-form>
+  <todo-list-todo-form [resetForm$]="resetForm$" [editForm$]="editForm$" (formValueEmitter)="getFormValue($event)">
+  </todo-list-todo-form>
 </todo-list-modal>
 
-<todo-list-modal
-[open]="showDeleteItemModal"
-[title]="'Apagar'"
-[primaryButtonText]="'Sim'"
-[secondaryButtonText]="'Não'"
-(primaryButtonEvent)="deleteItem()"
-(secondaryButtonEvent)="closeDeleteModal()"
->
+<todo-list-modal [open]="showDeleteItemModal" [title]="'Apagar'" [primaryButtonText]="'Sim'"
+  [secondaryButtonText]="'Não'" (primaryButtonEvent)="deleteItem()" (secondaryButtonEvent)="closeDeleteModal()">
   <h3>Deseja apagar o item <strong>{{itemToDelete?.name}}</strong></h3>
 </todo-list-modal>
 
-<todo-list-modal
-[open]="showCompleteItemModal"
-[title]="'Concluir'"
-[primaryButtonText]="'Sim'"
-[secondaryButtonText]="'Não'"
-[primaryButtonIsValid]="dateItemToComplete ? true : false"
-(primaryButtonEvent)="completeItem()"
-(secondaryButtonEvent)="closeCompleteModal()"
->
-<mat-form-field>
-  <mat-label>Quando a tarefa foi concluída?</mat-label>
-  <input matInput type="date" [(ngModel)]="dateItemToComplete">
+<todo-list-modal [open]="showCompleteItemModal" [title]="'Concluir'" [primaryButtonText]="'Sim'"
+  [secondaryButtonText]="'Não'" [primaryButtonIsValid]="dateItemToComplete ? true : false"
+  (primaryButtonEvent)="completeItem()" (secondaryButtonEvent)="closeCompleteModal()">
+  <mat-form-field>
+    <mat-label>Quando a tarefa foi concluída?</mat-label>
+    <input matInput type="date" [(ngModel)]="dateItemToComplete">
   </mat-form-field>
 </todo-list-modal>

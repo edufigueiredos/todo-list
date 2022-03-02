@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { HomeDetailComponent } from './home-detail/home-detail.component';
 import { ChangeMatIconStyleModule } from '@todo-list/app/directives/change-mat-icon-style';
+import { CardModule } from '@todo-list/app/component/card';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { ChangeMatIconStyleModule } from '@todo-list/app/directives/change-mat-i
     MatInputModule,
     ModalModule,
     TodoFormModule,
+    CardModule,
     MatButtonModule,
     MatIconModule,
     ChangeMatIconStyleModule

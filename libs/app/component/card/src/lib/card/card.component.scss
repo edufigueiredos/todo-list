@@ -1,0 +1,15 @@
+@import '../../../../../../styles/colors.scss';
+
+.card {
+  min-width: 300px;
+  height: auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px $darkGray;
+  .card-name {
+    text-align: center;
+  }
+  .card-content {
+    padding: 10px;
+  }
+}
