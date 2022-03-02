@@ -1,7 +1,7 @@
 import { Subject, Observable, take } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '@todo-list/schema/todo';
-import { allTodosSelector, loadTodosEffect, TodoService, TodoState } from '@todo-list/app/services/todo-service';
+import { allTodosSelector, completeTodo, createTodo, deleteTodo, getAllTodos, TodoService, TodoState, updateTodo } from '@todo-list/app/services/todo-service';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
   getTodoList() {
-    this.store.dispatch(loadTodosEffect());
+    this.store.dispatch(getAllTodos());
   }
 
   openModal() {
@@ -54,20 +54,14 @@ export class HomeComponent implements OnInit {
 
   saveData() {
     if (this.isItemEditing && this.formValue && this.formValue._id) {
-      this.todoService.update(this.formValue?._id, this.formValue)
-        .pipe(take(1))
-        .subscribe(() => {
-          this.closeModal();
-        });
+      this.store.dispatch(updateTodo({ id: this.formValue._id, todo: this.formValue }));
+      this.closeModal();
     } else if (this.formValue) {
       if (this.formValue._id === '') delete this.formValue._id;
       if (this.formValue.status === '') delete this.formValue.status;
 
-      this.todoService.create(this.formValue)
-        .pipe(take(1))
-        .subscribe(() => {
-          this.closeModal();
-        });
+      this.store.dispatch(createTodo({ todo: this.formValue }));
+      this.closeModal();
     };
   }
 
@@ -83,9 +77,8 @@ export class HomeComponent implements OnInit {
 
   deleteItem() {
     if (this.itemToDelete && this.itemToDelete._id) {
-      this.todoService.delete(this.itemToDelete._id)
-        .pipe(take(1))
-        .subscribe(() => this.closeDeleteModal());
+      this.store.dispatch(deleteTodo({ id: this.itemToDelete._id }))
+      this.closeDeleteModal();
     }
   }
 
@@ -98,9 +91,8 @@ export class HomeComponent implements OnInit {
     if (this.dateItemToComplete && this.itemToComplete && this.itemToComplete._id) {
       const id = this.itemToComplete._id;
       const date = { date: this.dateItemToComplete };
-      this.todoService.completeTask(id, date)
-        .pipe(take(1))
-        .subscribe(() => this.showCompleteItemModal = false);
+      this.store.dispatch(completeTodo({ id, date }))
+      this.closeCompleteModal();
     }
   }
 

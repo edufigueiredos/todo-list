@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { TodoService } from '@todo-list/app/services/todo-service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { getTodoSelector, TodoService } from '@todo-list/app/services/todo-service';
 import { Todo } from '@todo-list/schema/todo';
-import { of, switchMap, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'todo-list-home-detail',
@@ -15,12 +16,12 @@ export class HomeDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private todoService: TodoService
+    private store: Store
   ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id)
-      this.todoDetail$ = this.todoService.getById(id);
+      this.todoDetail$ = this.store.select(getTodoSelector(id));
   }
 }

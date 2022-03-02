@@ -1,4 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
+import { Todo } from "@todo-list/schema/todo";
 import { TodoState } from "./todo-state.model";
 import { removeTodoStore, setAllTodosStore, setTodoStore, updateTodoStore } from "./todo.actions";
 
@@ -18,21 +19,27 @@ export const todoReducer = createReducer(
     return state
   }),
   on(setTodoStore, (state, { todo }) => {
-    state.todos.push(todo);
+    state = {
+      ...state,
+      todos: [
+        ...state.todos,
+        { ...todo }
+      ]
+    }
     return state
   }),
   on(removeTodoStore, (state, { id }) => {
-    const index = state.todos.findIndex(todo => todo._id === id);
-    if (index >= 0) {
-      state.todos.splice(index, 1);
+    state = {
+      ...state,
+      todos: state.todos.filter(todo => todo._id !== id)
     }
     return state
   }),
-  on(updateTodoStore, (state, {id, todo}) => {
-    const index = state.todos.findIndex(todo => todo._id === id);
-    if (index >= 0) {
-      state.todos[index] = todo;
+  on(updateTodoStore, (state, { id, todo }) => {
+    state = {
+      ...state,
+      todos: state.todos.map((todoMap: Todo) => todoMap._id === id ? todo : todoMap)
     }
-    return state
+    return state;
   })
 )

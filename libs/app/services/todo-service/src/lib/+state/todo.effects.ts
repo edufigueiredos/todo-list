@@ -3,14 +3,15 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { TodoService } from "../todo.service";
 import {
   errorAction,
-  loadTodosEffect,
+  getAllTodos,
   setAllTodosStore,
-  successAction, createTodoEffect,
+  successAction, createTodo,
   setTodoStore,
-  updateTodoEffect,
+  updateTodo,
   updateTodoStore,
-  deleteTodoEffect,
-  completeTodoEffect
+  deleteTodo,
+  completeTodo,
+  removeTodoStore
 } from './todo.actions';
 import { catchError, map, switchMap, tap } from 'rxjs';
 import { Store } from "@ngrx/store";
@@ -21,7 +22,7 @@ export class TodoEffect {
 
   loadTodos$ = createEffect(
     () => this.actions$.pipe(
-      ofType(loadTodosEffect),
+      ofType(getAllTodos),
       switchMap(() => this.todoService.getAll().pipe(
         tap((todos: Todo[]) => this.store.dispatch(setAllTodosStore({ todos })))
       )),
@@ -32,7 +33,7 @@ export class TodoEffect {
 
   createTodo$ = createEffect(
     () => this.actions$.pipe(
-      ofType(createTodoEffect),
+      ofType(createTodo),
       switchMap(({ todo }) => this.todoService.create(todo).pipe(
         tap((todo: Todo) => this.store.dispatch(setTodoStore({ todo })))
       )),
@@ -43,7 +44,7 @@ export class TodoEffect {
 
   updateTodo$ = createEffect(
     () => this.actions$.pipe(
-      ofType(updateTodoEffect),
+      ofType(updateTodo),
       switchMap(({ id, todo: todoToUpdate }) => this.todoService.update(id, todoToUpdate).pipe(
         tap((todo: Todo) => this.store.dispatch(updateTodoStore({ id, todo })))
       )),
@@ -54,8 +55,10 @@ export class TodoEffect {
 
   deleteTodo$ = createEffect(
     () => this.actions$.pipe(
-      ofType(deleteTodoEffect),
-      switchMap(({ id }) => this.todoService.delete(id)),
+      ofType(deleteTodo),
+      switchMap(({ id }) => this.todoService.delete(id).pipe(
+        tap(() => this.store.dispatch(removeTodoStore({ id })))
+      )),
       map(() => successAction()),
       catchError(() => [errorAction])
     )
@@ -63,7 +66,7 @@ export class TodoEffect {
 
   completeTodo$ = createEffect(
     () => this.actions$.pipe(
-      ofType(completeTodoEffect),
+      ofType(completeTodo),
       switchMap(({ id, date }) => this.todoService.completeTask(id, date).pipe(
         tap((todo: Todo) => this.store.dispatch(updateTodoStore({ id, todo })))
       )),
