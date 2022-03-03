@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { getTodoSelector, TodoService } from '@todo-list/app/services/todo-service';
+import { getAllTodos, getTodoSelector } from '@todo-list/app/services/todo-service';
 import { Todo } from '@todo-list/schema/todo';
 import { Observable } from 'rxjs';
 
@@ -21,6 +21,7 @@ export class HomeDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    this.store.dispatch(getAllTodos());
     if (id)
       this.todoDetail$ = this.store.select(getTodoSelector(id));
   }

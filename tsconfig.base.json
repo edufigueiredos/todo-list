@@ -34,7 +34,6 @@
       "@todo-list/app/services/todo-service": [
         "libs/app/services/todo-service/src/index.ts"
       ],
-      "@todo-list/app/state/ngrx": ["libs/app/state/ngrx/src/index.ts"],
       "@todo-list/models": ["libs/models/src/index.ts"],
       "@todo-list/schema/todo": ["libs/schema/todo/src/index.ts"]
     }

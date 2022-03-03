@@ -13,9 +13,10 @@ import {
   completeTodo,
   removeTodoStore
 } from './todo.actions';
-import { catchError, map, switchMap, tap } from 'rxjs';
+import { catchError, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
 import { Store } from "@ngrx/store";
 import { Todo } from "@todo-list/schema/todo";
+import { allTodosSelector } from "./todo.selectors";
 
 @Injectable()
 export class TodoEffect {
@@ -23,9 +24,15 @@ export class TodoEffect {
   loadTodos$ = createEffect(
     () => this.actions$.pipe(
       ofType(getAllTodos),
-      switchMap(() => this.todoService.getAll().pipe(
-        tap((todos: Todo[]) => this.store.dispatch(setAllTodosStore({ todos })))
-      )),
+      withLatestFrom(this.store.select(allTodosSelector)),
+      switchMap(([action, todosSelected]) => {
+        if (todosSelected.length) {
+          return of();
+        }
+        return this.todoService.getAll().pipe(
+          tap((todos: Todo[]) => this.store.dispatch(setAllTodosStore({ todos })))
+        );
+      }),
       map(() => successAction()),
       catchError(() => [errorAction()])
     )
