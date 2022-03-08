@@ -31,13 +31,13 @@
             <button mat-mini-fab [routerLink]="['/home/list-detail', item?._id]" class="info-button">
               <mat-icon>info</mat-icon>
             </button>
-            <button mat-mini-fab color="accent" (click)="sendDataToForm(item)">
+            <button mat-mini-fab color="accent" (click)="sendDataToForm(item)" class="edit-button">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-mini-fab color="primary" (click)="openDeleteModal(item)">
+            <button mat-mini-fab color="warn" (click)="openDeleteModal(item)">
               <mat-icon>delete</mat-icon>
             </button>
-            <button mat-mini-fab color="warn" (click)="openCompleteModal(item)" *ngIf="!item?.completedAt">
+            <button mat-mini-fab color="accent" (click)="openCompleteModal(item)" *ngIf="!item?.completedAt">
               <mat-icon>check</mat-icon>
             </button>
           </div>
@@ -45,7 +45,7 @@
       </todo-list-card>
     </ng-container>
   </div>
-  <button color="warn" mat-mini-fab class="button-add" (click)="openModal()">
+  <button color="accent" mat-mini-fab class="button-add" (click)="openModal()">
     <mat-icon>add</mat-icon>
   </button>
 </section>

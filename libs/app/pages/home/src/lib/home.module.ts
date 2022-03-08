@@ -34,9 +34,6 @@ import { CardModule } from '@todo-list/app/component/card';
     HomeComponent,
     HomeDetailComponent
   ],
-  exports: [
-    HomeComponent
-  ],
   providers: []
 })
 export class HomeModule {}

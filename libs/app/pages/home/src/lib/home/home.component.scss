@@ -43,7 +43,10 @@
         margin-top: 30px;
 
         .info-button {
-          background-color: $darkGray;
+          background-color: $lightPrimary;
+        }
+        .edit-button {
+          background-color: $blue;
         }
       }
     }

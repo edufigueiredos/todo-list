@@ -1,4 +1,4 @@
 <div class="card-component">
-  <h1 class="card-title">{{cardTitle}}</h1>
+  <h1 class="card-title" *ngIf="cardTitle">{{cardTitle}}</h1>
   <ng-content></ng-content>
 </div>

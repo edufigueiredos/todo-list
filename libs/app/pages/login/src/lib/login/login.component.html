@@ -1,0 +1,20 @@
+<section class="login-component">
+  <div class="login-container">
+    <todo-list-card [cardTitle]="loginTitle">
+      <form [formGroup]="loginForm" class="form-login">
+        <mat-form-field>
+          <mat-label>Nome de Usuário</mat-label>
+          <input matInput type="text" formControlName="username">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+      </form>
+      <div class="buttons">
+        <button mat-button class="secondary-button" [routerLink]="['/auth/register']">Cadastrar</button>
+        <button mat-button class="primary-button">Entrar</button>
+      </div>
+    </todo-list-card>
+  </div>
+</section>

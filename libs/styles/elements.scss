@@ -10,6 +10,11 @@
   cursor: not-allowed;
 }
 
+@mixin pageSizeWithoutNavBar() {
+  width: 100vw;
+  height: calc(100vh - 75px);
+}
+
 // Buttons
 .primary-button {
   @include buttonWidth();
