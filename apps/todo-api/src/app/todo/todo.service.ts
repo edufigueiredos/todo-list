@@ -22,6 +22,8 @@ export class TodoService {
 
   async create(todo: Todo): Promise<Todo> {
     const todoCreated = new this.todoModel(todo);
+    const newDate = new Date();
+    todoCreated.createdAt = new Date(`${newDate.getFullYear()}-${newDate.getMonth()}-${newDate.getDate()}`);
     return await todoCreated.save();
   }
 
@@ -38,7 +40,7 @@ export class TodoService {
       await this.todoModel.updateOne({_id: id}, todo);
       return await this.findById(id);
     } else {
-      throw new Error('ID passado por parêmetro e o ID do objeto são diferentes');
+      throw new Error('ID passado por parâmetro e o ID do objeto são diferentes');
     }
   }
 

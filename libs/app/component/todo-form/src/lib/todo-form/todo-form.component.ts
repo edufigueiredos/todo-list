@@ -16,7 +16,7 @@ export class TodoFormComponent implements OnInit, OnDestroy {
 
   todoForm: FormGroup = this.formBuilder.group({
     _id: [''],
-    createdAt: [new Date()],
+    createdAt: [],
     name: ['', Validators.required],
     description: [''],
     date: ['', Validators.required],
@@ -55,12 +55,14 @@ export class TodoFormComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$),
       mergeMap((valid: string) => {
         if (valid === 'VALID') {
-          return this.todoForm.valueChanges;
+          return of(this.todoForm.value);
         } else {
           return of(null)
         }
       })
-    ).subscribe(data => this.formValueEmitter.next(data));
+    ).subscribe(data => {
+      this.formValueEmitter.next(data)
+    });
   }
 
   ngOnDestroy(): void {

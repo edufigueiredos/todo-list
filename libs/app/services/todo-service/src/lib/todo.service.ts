@@ -12,7 +12,7 @@ export class TodoService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(`${this.api}`);
+    return this.http.get<Todo[]>(this.api);
   }
 
   getById(id: string): Observable<Todo> {
