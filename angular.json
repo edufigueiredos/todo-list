@@ -1,13 +1,13 @@
 {
   "version": 2,
   "projects": {
+    "app-auth": "libs/app/auth",
     "app-component-card": "libs/app/component/card",
     "app-component-modal": "libs/app/component/modal",
     "app-component-todo-form": "libs/app/component/todo-form",
     "app-component-top-bar": "libs/app/component/top-bar",
     "app-directives-change-mat-icon-style": "libs/app/directives/change-mat-icon-style",
     "app-pages-home": "libs/app/pages/home",
-    "app-pages-login": "libs/app/pages/login",
     "app-services-todo-service": "libs/app/services/todo-service",
     "models": "libs/models",
     "schema-todo": "libs/schema/todo",

@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'app-pages-login',
-  preset: '../../../../jest.preset.js',
+  displayName: 'app-auth',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/app/pages/login',
+  coverageDirectory: '../../../coverage/libs/app/auth',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

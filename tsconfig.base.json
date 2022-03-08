@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@env/frontend": ["environments/frontend/environment.ts"],
+      "@todo-list/app/auth": ["libs/app/auth/src/index.ts"],
       "@todo-list/app/component/card": ["libs/app/component/card/src/index.ts"],
       "@todo-list/app/component/modal": [
         "libs/app/component/modal/src/index.ts"
@@ -30,7 +31,6 @@
         "libs/app/directives/change-mat-icon-style/src/index.ts"
       ],
       "@todo-list/app/pages/home": ["libs/app/pages/home/src/index.ts"],
-      "@todo-list/app/pages/login": ["libs/app/pages/login/src/index.ts"],
       "@todo-list/app/services/todo-service": [
         "libs/app/services/todo-service/src/index.ts"
       ],

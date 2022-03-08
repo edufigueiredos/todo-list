@@ -1,16 +1,13 @@
-@import '../../../../../../styles/colors.scss';
-@import '../../../../../../styles/elements.scss';
+@import '../../../../../styles/colors.scss';
+@import '../../../../../styles/elements.scss';
 
 .login-component {
   @include pageSizeWithoutNavBar();
-  // display: flex;
-  // justify-content: center;
   padding: 50px;
 
   .login-container {
     width: 350px;
     margin: 0 auto;
-    // height: 262px;
     padding: 20px;
     .form-login {
       mat-form-field {

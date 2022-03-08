@@ -1,14 +1,14 @@
 {
   "projectType": "library",
-  "root": "libs/app/pages/login",
-  "sourceRoot": "libs/app/pages/login/src",
+  "root": "libs/app/auth",
+  "sourceRoot": "libs/app/auth/src",
   "prefix": "todo-list",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/app/pages/login"],
+      "outputs": ["coverage/libs/app/auth"],
       "options": {
-        "jestConfig": "libs/app/pages/login/jest.config.js",
+        "jestConfig": "libs/app/auth/jest.config.js",
         "passWithNoTests": true
       }
     },
@@ -16,8 +16,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/app/pages/login/src/**/*.ts",
-          "libs/app/pages/login/src/**/*.html"
+          "libs/app/auth/src/**/*.ts",
+          "libs/app/auth/src/**/*.html"
         ]
       }
     }

@@ -4,7 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
   { path: 'home', loadChildren: () => import('@todo-list/app/pages/home').then(module => module.HomeModule) },
-  { path: 'auth', loadChildren: () => import('@todo-list/app/pages/login').then(module => module.LoginModule) },
+  { path: 'auth', loadChildren: () => import('@todo-list/app/auth').then(module => module.AuthModule) },
 ]
 
 @NgModule({
