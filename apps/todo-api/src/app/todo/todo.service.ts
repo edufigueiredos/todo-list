@@ -23,7 +23,7 @@ export class TodoService {
   async create(todo: Todo): Promise<Todo> {
     const todoCreated = new this.todoModel(todo);
     const newDate = new Date();
-    todoCreated.createdAt = new Date(`${newDate.getFullYear()}-${newDate.getMonth()}-${newDate.getDate()}`);
+    todoCreated.createdAt = new Date(`${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()}`);
     return await todoCreated.save();
   }
 
