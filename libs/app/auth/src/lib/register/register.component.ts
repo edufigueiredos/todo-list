@@ -13,7 +13,7 @@ export class RegisterComponent {
     password: ['', Validators.required]
   })
 
-  loginTitle = 'Cadastrar';
+  loginTitle = 'Cadastrar Usuário';
 
   constructor(private formBuilder: FormBuilder) { }
 
