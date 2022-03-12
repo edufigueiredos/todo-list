@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@env/frontend": ["environments/frontend/environment.ts"],
+      "@env/backend": ["environments/backend/environment.ts"],
       "@todo-list/app/auth": ["libs/app/auth/src/index.ts"],
       "@todo-list/app/component/card": ["libs/app/component/card/src/index.ts"],
       "@todo-list/app/component/modal": [

@@ -11,6 +11,9 @@ export class UserService {
   constructor(@InjectModel(UserModel.name) private userModel: Model<UserDocument>) { }
 
   async create(createUserDTO: CreateUserDTO): Promise<User> {
+    const userExist = await this.findUserByUsername(createUserDTO.username);
+    if (userExist) throw new Error('Este usuário já existe.');
+
     const user: CreateUserDTO = {
       ...createUserDTO,
       password: await hash(createUserDTO.password, 10)
@@ -21,6 +24,7 @@ export class UserService {
   }
 
   async findUserByUsername(username: string): Promise<User> {
-    return await this.userModel.findOne({ username }).exec();
+    const user = await this.userModel.findOne({ username }).exec();
+    return user
   }
 }

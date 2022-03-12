@@ -19,8 +19,8 @@
           "inspect": false,
           "fileReplacements": [
             {
-              "replace": "apps/todo-api/src/environments/environment.ts",
-              "with": "apps/todo-api/src/environments/environment.prod.ts"
+              "replace": "/environments/backend/environment.ts",
+              "with": "environments/backend/environment.prod.ts"
             }
           ]
         }
