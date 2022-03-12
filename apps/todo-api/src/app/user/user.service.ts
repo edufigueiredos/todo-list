@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from '@todo-list/schema/todo';
 import { hash } from 'bcrypt';
@@ -12,7 +12,7 @@ export class UserService {
 
   async create(createUserDTO: CreateUserDTO): Promise<User> {
     const userExist = await this.findUserByUsername(createUserDTO.username);
-    if (userExist) throw new Error('Este usuário já existe.');
+    if (userExist) throw new ConflictException('Este usuário já existe.');
 
     const user: CreateUserDTO = {
       ...createUserDTO,
