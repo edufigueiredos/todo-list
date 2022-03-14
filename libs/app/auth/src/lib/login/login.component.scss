@@ -3,14 +3,11 @@
 
 .login-component {
   @include pageSizeWithoutNavBar();
-  // display: flex;
-  // justify-content: center;
   padding: 50px;
 
   .login-container {
     width: 350px;
     margin: 0 auto;
-    // height: 262px;
     padding: 20px;
     .form-login {
       mat-form-field {
@@ -20,9 +17,17 @@
     }
 
     .buttons {
+      margin-top: 10px;
       button {
         margin: 0 5px
       }
+    }
+
+    .login-error {
+      font-size: 1.1em;
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
     }
   }
 }

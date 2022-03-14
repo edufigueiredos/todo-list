@@ -2,7 +2,7 @@ import { User } from "@todo-list/schema/todo";
 import {} from 'class-transformer';
 import { IsString, Matches, MaxLength, MinLength } from 'class-validator';
 
-export class CreateUserDTO extends User {
+export class CreateUserDTO implements User {
 
   @IsString({message: 'Nome de usuário precisa ser um texto'})
   @MinLength(4, {message: 'O nome de usuário precisa ter no mínimo 4 caracteres'})

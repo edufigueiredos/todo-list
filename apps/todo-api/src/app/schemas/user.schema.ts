@@ -5,7 +5,7 @@ import { Document } from 'mongoose';
 export type UserDocument = UserModel & Document
 
 @Schema()
-export class UserModel extends User {
+export class UserModel implements User {
   _id?: string;
   @Prop({ required: true }) username: string;
   @Prop({ required: true }) password: string;

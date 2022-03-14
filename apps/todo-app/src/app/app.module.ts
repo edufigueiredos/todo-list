@@ -1,5 +1,5 @@
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -13,6 +13,7 @@ import localePt from '@angular/common/locales/pt';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '@env/frontend'
+import { AuthInterceptor, AuthModule } from '@todo-list/app/auth';
 registerLocaleData(localePt)
 
 @NgModule({
@@ -29,11 +30,9 @@ registerLocaleData(localePt)
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [
-    {
-      provide: LOCALE_ID,
-      useValue: 'pt'
-    }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: 'pt' }
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -37,6 +37,6 @@ export class AuthService {
       }
     }
 
-    throw new Error('Nome de usuário ou senha estão incorretos.');
+    throw new Error('Nome de usuário ou senha estão incorretos');
   }
 }
