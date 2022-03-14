@@ -2,9 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '@env/frontend';
-import { AccessToken, User, UserLogin } from '@todo-list/schema/todo';
+import { AccessToken, User, UserResponse, UserToLogin } from '@todo-list/schema/todo';
 import { Observable, of, switchMap, tap } from 'rxjs';
-import { UserResponse } from './../../../../schema/todo/src/lib/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,7 @@ export class AuthService {
     private router: Router
   ) { }
 
-  login(user: UserLogin): Observable<UserResponse> {
+  login(user: UserToLogin): Observable<UserResponse> {
     return this.http.post<AccessToken>(`${this.api}/login`, user)
       .pipe(
         switchMap((access_token: AccessToken) => {
@@ -26,6 +25,11 @@ export class AuthService {
           return this.getUser()
         })
       )
+  }
+
+  createUser(user: User): Observable<UserResponse> {
+    return this.http.post<UserResponse>(`${this.api}/user`, user)
+      .pipe(tap(userLogin => this.setUserToLocalStorage(userLogin)))
   }
 
   logoff() {
@@ -49,10 +53,6 @@ export class AuthService {
 
   setUserToLocalStorage(user: UserResponse) {
     localStorage.setItem('todoListUser', JSON.stringify(user));
-  }
-
-  createUser(user: User): Observable<UserLogin> {
-    return this.http.post<UserLogin>(`${this.api}/user`, user);
   }
 
   getToken(): string | null {

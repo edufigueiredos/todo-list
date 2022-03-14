@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserLogin } from '@todo-list/schema/todo';
+import { UserToLogin } from '@todo-list/schema/todo';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class LoginComponent {
     private router: Router
   ) { }
 
-  login(user: UserLogin) {
+  login(user: UserToLogin) {
     this.authService.login(user).subscribe({
       next: () => this.router.navigate(['home']),
       error: (error) => {

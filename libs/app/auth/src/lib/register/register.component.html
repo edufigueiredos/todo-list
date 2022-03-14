@@ -1,22 +1,35 @@
 <section class="login-component">
   <div class="login-container">
-    <todo-list-card [cardTitle]="loginTitle">
-      <form [formGroup]="loginForm" class="form-login">
+    <todo-list-card [cardTitle]="registerTitle">
+      <form [formGroup]="registerForm" class="form-login">
         <mat-form-field>
           <mat-label>Nome de Usuário</mat-label>
           <input matInput type="text" formControlName="username">
+          <mat-hint>Escolha um nick para fazer login</mat-hint>
+          <mat-error>Este campo é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Seu nome</mat-label>
+          <input matInput type="text" formControlName="name">
+          <mat-hint>Seu nome completo</mat-hint>
           <mat-error>Este campo é obrigatório</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Senha</mat-label>
           <input matInput type="password" formControlName="password">
+          <mat-hint>Senha para fazer login</mat-hint>
           <mat-error>Este campo é obrigatório</mat-error>
         </mat-form-field>
       </form>
       <div class="buttons">
         <button mat-button class="secondary-button" [routerLink]="['/auth/login']">Voltar</button>
-        <button mat-button class="primary-button">Cadastrar</button>
+        <button mat-button class="primary-button" (click)="createUser(registerForm?.value)" [disabled]="registerForm?.invalid">Cadastrar</button>
       </div>
     </todo-list-card>
+
+    <ng-container *ngIf="registerErrorList?.length">
+      <p *ngFor="let error of registerErrorList" class="login-error">{{error}}</p>
+      <p class="login-error">😭</p>
+    </ng-container>
   </div>
 </section>
