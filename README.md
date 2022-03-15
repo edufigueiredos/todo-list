@@ -4,14 +4,14 @@
 
 That is a project that I created to study Nx, Angular, NestJS and Flutter.
 
-#NestJS
+# NestJS
 I created a API using NestJS with CRUD and Auth functionality, using bcrypt to cryptograph the user password and Passport to generate the JWT token.
 
-#Angular
+# Angular
 In the front-end, I'm using Angular with modularization, NGRX, Guards e Auth.
 
-#NX.dev
+# NX.dev
 With NX I created some Angular Libs to maintain my application uncoupled.
 
-#Flutter
+# Flutter
 As soon as possible, I'm starting to create mobile app with Flutter to consume the API.
