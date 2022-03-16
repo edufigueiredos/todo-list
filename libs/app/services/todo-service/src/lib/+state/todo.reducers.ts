@@ -1,7 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { Todo } from "@todo-list/schema/todo";
 import { TodoState } from "./todo-state.model";
-import { removeTodoStore, setAllTodosStore, setTodoStore, updateTodoStore } from "./todo.actions";
+import { clearTodoStore, removeTodoStore, setAllTodosStore, setTodoStore, updateTodoStore } from "./todo.actions";
 
 export const initialState: TodoState = {
   todos: []
@@ -27,6 +27,10 @@ export const todoReducer = createReducer(
       ]
     }
     return state
+  }),
+  on(clearTodoStore, (state) => {
+    state = { todos: [] }
+    return state;
   }),
   on(removeTodoStore, (state, { id }) => {
     state = {

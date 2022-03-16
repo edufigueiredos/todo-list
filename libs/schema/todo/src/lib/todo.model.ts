@@ -7,4 +7,5 @@ export interface Todo {
   createdAt?: Date;
   completedAt?: Date;
   status?: string;
+  userId?: string;
 }

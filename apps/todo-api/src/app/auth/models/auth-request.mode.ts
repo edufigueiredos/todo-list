@@ -1,5 +1,5 @@
-import { User } from "@todo-list/schema/todo";
+import { UserResponse } from "@todo-list/schema/todo";
 
 export interface AuthRequest extends Request {
-  user: User
+  user: UserResponse
 }

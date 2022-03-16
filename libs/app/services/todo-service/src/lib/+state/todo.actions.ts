@@ -3,6 +3,7 @@ import { Todo } from '@todo-list/schema/todo';
 
 export const setAllTodosStore = createAction('[Todo] [Store] Carrega todas as tarefa no Store', props<{ todos: Todo[] }>());
 export const setTodoStore = createAction('[Todo] [Store] Adiciona uma tarefa no Store', props<{ todo: Todo }>());
+export const clearTodoStore = createAction('[Todo] [Store] Limpa todas as tarefas do Store')
 export const removeTodoStore = createAction('[Todo] [Store] Remove uma tafera do Store', props<{ id: string }>());
 export const updateTodoStore = createAction('[Todo] [Store] Atualiza uma todo no Store', props<{ id: string, todo: Todo }>());
 

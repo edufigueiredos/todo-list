@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User } from '@todo-list/schema/todo';
+import { UserResponse } from '@todo-list/schema/todo';
 import { compare } from 'bcrypt';
 import { UserService } from '../user/user.service';
 import { UserPayload } from './models/user-payload.model';
@@ -14,9 +14,9 @@ export class AuthService {
     private jwtService: JwtService
   ) { }
 
-  login(user: User): UserToken {
+  login(user: UserResponse): UserToken {
     const payload: UserPayload = {
-      sub: user._id,
+      sub: user.id,
       username: user.username,
       name: user.name
     };
