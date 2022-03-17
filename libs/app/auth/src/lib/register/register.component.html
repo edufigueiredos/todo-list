@@ -1,7 +1,7 @@
-<section class="login-component">
-  <div class="login-container">
+<section class="register-component">
+  <div class="register-container">
     <todo-list-card [cardTitle]="registerTitle">
-      <form [formGroup]="registerForm" class="form-login">
+      <form [formGroup]="registerForm" class="form-register">
         <mat-form-field>
           <mat-label>Nome de Usuário</mat-label>
           <input matInput type="text" formControlName="username">
@@ -28,8 +28,8 @@
     </todo-list-card>
 
     <ng-container *ngIf="registerErrorList?.length">
-      <p *ngFor="let error of registerErrorList" class="login-error">{{error}}</p>
-      <p class="login-error">😭</p>
+      <p *ngFor="let error of registerErrorList" class="register-error">{{error}}</p>
+      <p class="register-error">😭</p>
     </ng-container>
   </div>
 </section>

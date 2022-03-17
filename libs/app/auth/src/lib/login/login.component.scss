@@ -5,10 +5,17 @@
   @include pageSizeWithoutNavBar();
   padding: 50px;
 
+  @media(max-width: 370px) {
+    padding: 50px 10px;
+  }
+
   .login-container {
     width: 350px;
     margin: 0 auto;
     padding: 20px;
+    @media(max-width: 465px) {
+      width: 100%;
+    }
     .form-login {
       mat-form-field {
         width: 100%;
@@ -20,6 +27,17 @@
       margin-top: 10px;
       button {
         margin: 0 5px
+      }
+
+      @media(max-width: 405px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .primary-button {
+          margin-top: 10px;
+        }
       }
     }
 

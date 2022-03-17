@@ -14,5 +14,18 @@
     color: white;
     font-weight: bolder;
     margin: 0;
+
+    @media(max-width: 500px) {
+      font-size: 2em;
+    }
+    @media(max-width: 400px) {
+      font-size: 1.3em;
+    }
+  }
+
+  .secondary-button {
+    @media(max-width: 400px) {
+      min-width: 60px;
+    }
   }
 }

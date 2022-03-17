@@ -1,15 +1,22 @@
 @import '../../../../../styles/colors.scss';
 @import '../../../../../styles/elements.scss';
 
-.login-component {
+.register-component {
   @include pageSizeWithoutNavBar();
   padding: 50px;
 
-  .login-container {
+  @media(max-width: 370px) {
+    padding: 50px 10px;
+  }
+
+  .register-container {
     width: 350px;
     margin: 0 auto;
     padding: 20px;
-    .form-login {
+    @media(max-width: 465px) {
+      width: 100%;
+    }
+    .form-register {
       mat-form-field {
         width: 100%;
         font-size: 1.2em;
@@ -21,9 +28,20 @@
       button {
         margin: 0 5px
       }
+
+      @media(max-width: 405px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .primary-button {
+          margin-top: 10px;
+        }
+      }
     }
 
-    .login-error {
+    .register-error {
       font-size: 1.1em;
       text-align: center;
       font-weight: bold;
