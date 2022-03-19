@@ -1,5 +1,15 @@
 <nav class="nav-container">
   <h1 class="app-title">Lista de Tarefas</h1>
-  <!-- <mat-icon appChangeMatIconStyle="40px" cursor="pointer" iconColor="white">account_circle</mat-icon> -->
-  <button *ngIf="showLogoffButton" class="secondary-button" mat-button (click)="logoff()">Sair</button>
+  <mat-icon *ngIf="showUserOption" appChangeMatIconStyle="40px" cursor="pointer" iconColor="white" [matMenuTriggerFor]="menu">account_circle</mat-icon>
+  <mat-menu #menu="matMenu">
+    <span style="display: block;
+      text-align: center;
+      padding: 20px;
+      border-bottom: 1px solid #EBEBEB;">{{'Olá, ' + currentUser?.name}}</span>
+      <button mat-menu-item (click)="logout()"
+      style="display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;">Sair</button>
+  </mat-menu>
 </nav>

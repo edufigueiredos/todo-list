@@ -6,6 +6,7 @@ import { ChangeMatIconStyleModule } from '@todo-list/app/directives/change-mat-i
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     MatIconModule,
     MatButtonModule,
-    ChangeMatIconStyleModule
+    ChangeMatIconStyleModule,
+    MatMenuModule
   ],
   declarations: [
     TopBarComponent

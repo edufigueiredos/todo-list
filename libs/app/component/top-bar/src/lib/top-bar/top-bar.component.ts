@@ -3,6 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from '@todo-list/app/auth';
 import { clearTodoStore } from '@todo-list/app/services/todo-service';
+import { UserResponse } from '@todo-list/schema/todo';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
@@ -14,7 +15,8 @@ import { filter, takeUntil } from 'rxjs/operators';
 export class TopBarComponent implements OnInit, OnDestroy {
 
   unsubscribe$ = new Subject();
-  showLogoffButton = false;
+  showUserOption = false;
+  currentUser: UserResponse | null = null;
 
   constructor(
     private authService: AuthService,
@@ -23,6 +25,10 @@ export class TopBarComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.initTopBar();
+  }
+
+  initTopBar() {
     this.router.events
       .pipe(
         takeUntil(this.unsubscribe$),
@@ -30,16 +36,19 @@ export class TopBarComponent implements OnInit, OnDestroy {
       ).subscribe(() => {
         const authRoute = this.router.url.includes('auth');
         if (authRoute) {
-          this.showLogoffButton = false;
+          this.showUserOption = false;
           this.store.dispatch(clearTodoStore());
         } else {
-          this.showLogoffButton = true;
+          if (!this.currentUser) this.currentUser = this.authService.getUserFromLocalStorage();
+          console.log(this.currentUser);
+          this.showUserOption = true;
         }
       });
   }
 
-  logoff() {
+  logout() {
     this.authService.logoff();
+    this.currentUser = null;
   }
 
   ngOnDestroy(): void {
