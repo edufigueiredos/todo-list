@@ -15,7 +15,8 @@ async function bootstrap() {
   app.enableCors({
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: '*',
+    allowedHeaders: ['X-Requested-With', 'content-type'],
+    preflightContinue: true,
     credentials: true,
   });
   const port = process.env.PORT || 3333;
