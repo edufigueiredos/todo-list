@@ -8,10 +8,11 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { environment } from '@env/backend';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/todo-list'),
+    MongooseModule.forRoot(environment.mongodbConnectionString),
     TodoModule,
     UserModule,
     AuthModule,
