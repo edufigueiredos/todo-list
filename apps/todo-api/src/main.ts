@@ -13,7 +13,7 @@ async function bootstrap() {
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
   app.enableCors({
-    origin: 'http://localhost:4200'
+    origin: 'https://edfs-todo-list-api.herokuapp.com/api/*'
   });
   const port = process.env.PORT || 3333;
   app.useGlobalPipes(
