@@ -3,6 +3,7 @@
  * This is only a minimal backend to get started.
  */
 
+import { environment } from '@env/backend';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
@@ -13,7 +14,7 @@ async function bootstrap() {
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
   app.enableCors({
-    origin: 'https://edfs-todo-list-api.herokuapp.com/api/*'
+    origin: environment.enabledCors
   });
   const port = process.env.PORT || 3333;
   app.useGlobalPipes(
