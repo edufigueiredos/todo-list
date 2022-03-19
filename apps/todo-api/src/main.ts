@@ -15,8 +15,8 @@ async function bootstrap() {
   app.enableCors({
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Authorization', 'Content-Type'],
-    credentials: true
+    allowedHeaders: '*',
+    credentials: true,
   });
   const port = process.env.PORT || 3333;
   app.useGlobalPipes(
