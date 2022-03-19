@@ -3,7 +3,6 @@
  * This is only a minimal backend to get started.
  */
 
-import { environment } from '@env/backend';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
