@@ -19,7 +19,7 @@
           "inspect": false,
           "fileReplacements": [
             {
-              "replace": "/environments/backend/environment.ts",
+              "replace": "environments/backend/environment.ts",
               "with": "environments/backend/environment.prod.ts"
             }
           ]
