@@ -9,16 +9,9 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  app.enableCors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['X-Requested-With', 'content-type'],
-    preflightContinue: true,
-    credentials: true,
-  });
   const port = process.env.PORT || 3333;
   app.useGlobalPipes(
     new ValidationPipe({
