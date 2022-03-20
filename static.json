@@ -1,0 +1,6 @@
+{
+  "root": "dist/apps/todo-app/",
+  "routes": {
+    "/**/*.html": "index.html"
+  }
+}
