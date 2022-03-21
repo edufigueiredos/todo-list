@@ -3,6 +3,7 @@
 # TodoList
 
 That is a project that I created to study Nx, Angular, NestJS and Flutter.
+
 Link to project deployed on Heroku: https://edfs-todo-list-app.herokuapp.com/
 
 # NestJS
