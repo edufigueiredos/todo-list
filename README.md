@@ -3,6 +3,7 @@
 # TodoList
 
 That is a project that I created to study Nx, Angular, NestJS and Flutter.
+Link to project deployed on Heroku: https://edfs-todo-list-app.herokuapp.com/
 
 # NestJS
 I created a API using NestJS with CRUD and Auth functionality, using bcrypt to cryptograph the user password and Passport to generate the JWT token.
