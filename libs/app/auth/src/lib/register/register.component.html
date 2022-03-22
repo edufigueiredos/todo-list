@@ -16,14 +16,18 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Senha</mat-label>
-          <input matInput type="password" formControlName="password">
-          <mat-hint>Senha para fazer login</mat-hint>
+          <input matInput #password type="password" formControlName="password">
           <mat-error>Este campo é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Confirme sua senha</mat-label>
+          <input matInput #confirmPassword type="password">
+          <mat-hint *ngIf="password?.value !== confirmPassword?.value">Os dois campos de senha precisam ser iguais</mat-hint>
         </mat-form-field>
       </form>
       <div class="buttons">
         <button mat-button class="secondary-button" [routerLink]="['/auth/login']">Voltar</button>
-        <button mat-button class="primary-button" (click)="createUser(registerForm?.value)" [disabled]="registerForm?.invalid">Cadastrar</button>
+        <button mat-button class="primary-button" (click)="createUser(registerForm?.value)" [disabled]="registerForm?.invalid || password?.value !== confirmPassword?.value">Cadastrar</button>
       </div>
     </todo-list-card>
 

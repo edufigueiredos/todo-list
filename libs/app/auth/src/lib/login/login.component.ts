@@ -27,6 +27,7 @@ export class LoginComponent {
   ) { }
 
   login(user: UserToLogin) {
+    this.loginErrorVisible = false;
     this.authService.login(user).subscribe({
       next: () => this.router.navigate(['home']),
       error: (error) => {

@@ -3,5 +3,5 @@ export const environment = {
   jwt_secret: 'senhaSuperSegura',
   jwt_expire: '30d',
   mongodbConnectionString: 'mongodb://localhost:27017/todo-list',
-  enabledCors: 'http://localhost:4200'
+  enableCors: 'http://localhost:4200'
 }
